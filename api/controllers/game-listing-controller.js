@@ -1,12 +1,12 @@
-const shop = require("../models/shop");
+const shopListing = require("../models/game-listing");
 
 module.exports = {
 
-    getAll: function () {
+    search: function (query) {
         return new Promise((res, rej) => {
-            shop.findAll({})
+            shopListing.findAll(query)
                 .then(res)
-                .catch(er => {
+                .catch(err => {
                     rej(err);
                 });
         });
@@ -14,10 +14,11 @@ module.exports = {
 
     getById: function (id) {
         return new Promise((res, rej) => {
-            shop.findOne({
+
+            shopListing.findOne({
                 where: { id }
             })
-            then(res)
+                .then(res)
                 .catch(err => {
                     rej(err)
                 });
@@ -25,6 +26,6 @@ module.exports = {
     },
 
     create: function (params) {
-        return shop.create(params);
+        return shopListing.create(params);
     }
 };
