@@ -4,7 +4,7 @@ const gameListings = require("../controllers/game-listing-controller");
 const router = express.Router();
 
 function respondSearch(req, res) {
-    gameListings.search(req.query)
+    gameListings.search(req, res)
     .then(_ => {
         res.json(_);
     })
