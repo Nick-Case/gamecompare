@@ -1,10 +1,14 @@
-const shopListing = require("../models/game-listing");
+const gameListing = require("../models/game-listing");
+const game = require("../models/game");
 
 module.exports = {
 
     search: function (query) {
         return new Promise((res, rej) => {
-            shopListing.findAll(query)
+            gameListing.findAll({
+                where: query,
+                include : [{all : true}]
+            })
                 .then(res)
                 .catch(err => {
                     rej(err);
@@ -15,7 +19,7 @@ module.exports = {
     getById: function (id) {
         return new Promise((res, rej) => {
 
-            shopListing.findOne({
+            gameListing.findOne({
                 where: { id }
             })
                 .then(res)
@@ -26,6 +30,13 @@ module.exports = {
     },
 
     create: function (params) {
-        return shopListing.create(params);
+        return new Promise((res, rej) => {
+            gameListing.create(params)
+                .then(res)
+                .catch(err => {
+                    console.error(err);
+                    rej(err);
+                });
+        });
     }
 };

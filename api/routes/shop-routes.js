@@ -20,9 +20,11 @@ function respondCreate(req, res) {
         res.status(201).json(shop);
     })
     .catch(err => {
+        console.log(err);
         res.status(500).json({error : "Error"})
     });
 }
+
 router.get('/', (req, res) => {
     respondGetAll(res);
 })

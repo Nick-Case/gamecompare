@@ -1,28 +1,26 @@
 const express = require("express");
-const gameListings = require("../controllers/game-listing-controller");
+const gameListingPrices = require("../controllers/game-listing-price-controller");
 
 const router = express.Router();
 
 function respondSearch(req, res) {
-    gameListings.search(req.query)
+    gameListingPrices.search(req.query)
     .then(_ => {
         res.json(_);
     })
-    .catch((err) => {
-        console.error(err);
-        res.status(500).json({error : "Couldn't get game listings"});
+    .catch(() => {
+        res.status(500).json({ error : "Couldn't get game listing prices"});
     });
 }
 
 function respondCreate(req, res) {
-
-    gameListings.create(req.body)
+    gameListingPrices.create(req.body)
     .then(_ => {
         res.status(201).json(_);
     })
     .catch(err => {
-        console.error(err);
         res.status(500).json({error : "Error"});
+        console.error(err);
     });
 }
 
@@ -31,7 +29,6 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-
     respondCreate(req, res);
 });
 

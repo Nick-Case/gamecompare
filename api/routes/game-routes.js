@@ -9,7 +9,8 @@ function respondGetAll(res) {
     .then(g => {
         res.json(g)
     })
-    .catch(() => {
+    .catch((err) => {
+        console.error(err);
         res.status(500).json({error : "Couldnt get games"})
     });
 
@@ -20,7 +21,8 @@ function respondCreate(req, res) {
     .then(game => {
         res.status(201).json(game);
     })
-    .catch(error => {
+    .catch(err => {
+        console.error(err);
         res.status(500).json({error: "Error"})
     });
 }

@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize');
 const database = require('./database');
+const gameListing = require("./game-listing");
 
-    const shop = database.define("shop", {
+    const shop = database.define('shop', {
     id : {
         type : Sequelize.INTEGER,
         autoIncrement : true,
@@ -14,11 +15,14 @@ const database = require('./database');
         field : 'name',
         allowNull : false,
     },
-    baseurl : {
+    baseUrl : {
         type : Sequelize.STRING,
-        field : 'desc',
+        field : 'base_url',
         allowNull : false,
     },
-});
+}, { underscored : true});
+
+shop.hasMany(gameListing, { as : "listings", foreignKey : "shopId"});
+gameListing.belongsTo(shop);
 
 module.exports = shop;

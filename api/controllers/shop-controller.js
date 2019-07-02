@@ -6,7 +6,7 @@ module.exports = {
         return new Promise((res, rej) => {
             shop.findAll({})
                 .then(res)
-                .catch(er => {
+                .catch(err => {
                     rej(err);
                 });
         });
@@ -17,7 +17,7 @@ module.exports = {
             shop.findOne({
                 where: { id }
             })
-            then(res)
+                .then(res)
                 .catch(err => {
                     rej(err)
                 });

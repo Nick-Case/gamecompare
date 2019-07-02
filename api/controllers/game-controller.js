@@ -7,6 +7,7 @@ module.exports = {
     return new Promise((resolve, reject) => {
 
         game.findAll({
+            include : [{all : true}]
         })
         .then(resolve)
         .catch(error => {
