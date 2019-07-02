@@ -3,9 +3,8 @@ const games = require('../controllers/game-controller');
 
 const router = express.Router();
 
-function respondGetAll(res) {
-
-    games.getAll()
+function respondGetAll(req, res, next) {
+    games.getAll(req)
     .then(g => {
         res.json(g)
     })
@@ -27,9 +26,9 @@ function respondCreate(req, res) {
     });
 }
 
-router.get('/', (req, res) => {
+router.get('/', (req, res, next) => {
 
-    respondGetAll(res);
+    respondGetAll(req, res, next);
 
 });
 

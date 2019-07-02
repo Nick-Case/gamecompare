@@ -2,7 +2,6 @@ const Sequelize = require("sequelize");
 const database = require("./database");
 const game = require("./game");
 
-
 const gameListing = database.define("gameListing", {
     id : {
         type : Sequelize.INTEGER,
@@ -17,8 +16,5 @@ const gameListing = database.define("gameListing", {
         allowNull : false
     },
 });
-
-// gameListing.belongsTo(game);
-
 
 module.exports = gameListing;

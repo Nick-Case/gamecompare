@@ -11,6 +11,7 @@
   "dependencies": {
     "express": "latest",
     "sequelize": "latest",
-    "pg": "latest"
+    "pg": "latest",
+    "express-paginate": "latest"
   }
 }

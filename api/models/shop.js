@@ -22,7 +22,9 @@ const gameListing = require("./game-listing");
     },
 }, { underscored : true});
 
+//Associations
 shop.hasMany(gameListing, { as : "listings", foreignKey : "shopId"});
 gameListing.belongsTo(shop);
+
 
 module.exports = shop;
