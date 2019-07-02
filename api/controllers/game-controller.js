@@ -1,8 +1,5 @@
 const game = require('../models/game');
 
-const DEFAULT_LIMIT = 20;
-const DEFAULT_PAGE = 1;
-
 module.exports = {
 
     getAll: function(req) {
